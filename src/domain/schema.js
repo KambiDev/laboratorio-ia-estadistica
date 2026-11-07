@@ -1,0 +1,96 @@
+export const USES = ["Estudio", "Redacción", "Programación", "Investigación"];
+export const FIELDS = [
+  {
+    key: "id",
+    label: "ID",
+    question: null,
+    type: "Identificador",
+    coding: "E001, E002…",
+  },
+  {
+    key: "semester",
+    label: "Semestre",
+    question: "¿Qué semestre cursas?",
+    type: "Cuantitativa discreta",
+    coding: "Entero de 1 a 8",
+  },
+  {
+    key: "mode",
+    label: "Modalidad",
+    question: "¿Cuál es tu modalidad de estudio?",
+    type: "Cualitativa nominal",
+    coding: "Presencial / Híbrida / Virtual",
+  },
+  {
+    key: "frequency",
+    label: "Frecuencia IA",
+    question: "¿Con qué frecuencia utilizas IA para tareas académicas?",
+    type: "Cualitativa ordinal",
+    coding: "Nunca / Mensual / Semanal / Diaria",
+  },
+  {
+    key: "hoursAI",
+    label: "Horas IA",
+    question: "¿Cuántas horas semanales usas IA con fines académicos?",
+    type: "Cuantitativa continua",
+    coding: "Horas por semana, 0–10; una decimal",
+  },
+  {
+    key: "use",
+    label: "Uso principal",
+    question: "¿Cuál es tu uso académico principal de IA?",
+    type: "Cualitativa nominal",
+    coding: "Estudio / Redacción / Programación / Investigación",
+  },
+  {
+    key: "verify",
+    label: "Verifica",
+    question:
+      "¿Contrastas habitualmente las respuestas de IA con otras fuentes?",
+    type: "Cualitativa dicotómica",
+    coding: "Sí / No",
+  },
+  {
+    key: "training",
+    label: "Formación",
+    question: "¿Has recibido formación en uso responsable de IA?",
+    type: "Cualitativa dicotómica",
+    coding: "Sí / No",
+  },
+  {
+    key: "hoursStudy",
+    label: "Horas estudio",
+    question:
+      "¿Cuántas horas estudias por semana, aparte del tiempo dedicado a IA?",
+    type: "Cuantitativa continua",
+    coding: "Horas por semana, 2–28; una decimal",
+  },
+  {
+    key: "sleep",
+    label: "Sueño",
+    question: "¿Cuántas horas duermes en promedio cada día?",
+    type: "Cuantitativa continua",
+    coding: "Horas al día, 4,5–9; una decimal",
+  },
+  {
+    key: "perception",
+    label: "Utilidad",
+    question: "¿Qué utilidad académica percibes en la IA?",
+    type: "Cualitativa ordinal",
+    coding: "Baja / Media / Alta",
+  },
+  {
+    key: "grade",
+    label: "Promedio",
+    question: "¿Cuál fue tu promedio final del período?",
+    type: "Cuantitativa continua",
+    coding: "Puntos de 0 a 100; una decimal",
+  },
+  {
+    key: "courses",
+    label: "Materias",
+    question: "¿Cuántas asignaturas cursaste en el período?",
+    type: "Cuantitativa discreta",
+    coding: "Entero de 2 a 7",
+  },
+];
