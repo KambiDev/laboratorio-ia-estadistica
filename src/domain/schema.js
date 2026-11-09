@@ -1,4 +1,42 @@
 export const USES = ["Estudio", "Redacción", "Programación", "Investigación"];
+export const QUANTITATIVE_FIELDS = [
+  {
+    key: "semester",
+    title: "Semestre cursado",
+    unit: "semestres",
+    coefficient: false,
+  },
+  {
+    key: "hoursAI",
+    title: "Horas de uso de IA",
+    unit: "horas / semana",
+    coefficient: true,
+  },
+  {
+    key: "hoursStudy",
+    title: "Horas de estudio independiente",
+    unit: "horas / semana",
+    coefficient: true,
+  },
+  {
+    key: "sleep",
+    title: "Horas de sueño",
+    unit: "horas / día",
+    coefficient: true,
+  },
+  {
+    key: "grade",
+    title: "Promedio académico",
+    unit: "puntos / 100",
+    coefficient: true,
+  },
+  {
+    key: "courses",
+    title: "Asignaturas cursadas",
+    unit: "asignaturas",
+    coefficient: true,
+  },
+];
 export const FIELDS = [
   {
     key: "id",

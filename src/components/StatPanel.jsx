@@ -2,7 +2,7 @@ import React from "react";
 import { describe, number } from "../domain/statistics.js";
 import { Panel, Explain } from "./ui.jsx";
 
-export default function StatPanel({ title, unit, data }) {
+export default function StatPanel({ title, unit, data, coefficient }) {
   const s = describe(data);
   if (!s)
     return (
@@ -21,16 +21,17 @@ export default function StatPanel({ title, unit, data }) {
     [
       "Moda",
       s.modes.length
-        ? s.modes
-            .slice(0, 5)
-            .map((x) => number(x, 1))
-            .join(" / ") + (s.modes.length > 5 ? "…" : "")
+        ? s.modes.map((x) => number(x, 1)).join(" / ")
         : "Sin moda",
     ],
     ["Mínimo / máximo", `${number(s.min)} / ${number(s.max)}`],
     ["Rango", number(s.max - s.min, 2)],
     ["Varianza muestral", number(s.variance, 2)],
     ["Desviación muestral", number(s.sd, 2)],
+    [
+      "Coeficiente de variación",
+      coefficient ? `${number(s.cv, 2)} %` : "No procede",
+    ],
     ["Q1 / Q3", `${number(s.q1, 2)} / ${number(s.q3, 2)}`],
     ["P10 / P90", `${number(s.p10, 2)} / ${number(s.p90, 2)}`],
   ];
@@ -48,8 +49,11 @@ export default function StatPanel({ title, unit, data }) {
         La media ({number(s.mean, 2)} {unit}) resume el centro; la mediana
         divide la selección en dos. Q1 y Q3 contienen el 50 % central. La
         desviación estándar ({number(s.sd, 2)} {unit}) expresa dispersión en la
-        unidad original; la varianza se expresa en unidades al cuadrado. Estas
-        medidas describen solo las filas visibles, no una población real.
+        unidad original; la varianza se expresa en unidades al cuadrado.
+        {coefficient
+          ? ` El coeficiente de variación (${number(s.cv, 2)} %) expresa la desviación relativa a la media en una escala con cero interpretable.`
+          : " No se interpreta un coeficiente de variación del número de semestre: es una posición en el plan de estudios, no una magnitud con cero absoluto."}{" "}
+        Estas medidas describen solo las filas visibles, no una población real.
       </Explain>
     </Panel>
   );

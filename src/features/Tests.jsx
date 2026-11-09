@@ -106,6 +106,19 @@ export default function Tests({ chi, pairs, model, strength }) {
           <div className="formula-meta">
             R² <strong>{model ? number(model.r2, 3) : "—"}</strong> · rango X:{" "}
             {model ? `${number(model.minX)}–${number(model.maxX)} h` : "—"}
+            {model && (
+              <>
+                <br />
+                Ejemplo dentro del rango: a{" "}
+                {number(Math.max(model.minX, Math.min(4, model.maxX)))} h,
+                promedio estimado ={" "}
+                {number(
+                  model.estimate(Math.max(model.minX, Math.min(4, model.maxX))),
+                  2,
+                )}{" "}
+                puntos.
+              </>
+            )}
           </div>
           <Explain>
             {model

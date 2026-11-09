@@ -62,11 +62,13 @@ test("descriptiva muestral, cuartiles y percentiles", () => {
   assert.equal(s.mean, 3);
   assert.equal(s.median, 3);
   assert.equal(s.variance, 2.5);
+  assert.ok(Math.abs(s.cv - Math.sqrt(2.5) / 3 * 100) < 1e-12);
   assert.equal(s.q1, 2);
   assert.equal(s.q3, 4);
   assert.equal(quantile(values, 0.1), 1.4);
   assert.equal(describe([]), null);
   assert.ok(Number.isNaN(describe([1]).variance));
+  assert.ok(Number.isNaN(describe([0, 0]).cv));
   assert.deepEqual(
     validNumbers([{ grade: null }, { grade: "" }, { grade: 80 }], "grade"),
     [80],

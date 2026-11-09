@@ -145,7 +145,7 @@ export default function App() {
             distribution={analysis.distribution}
             dominant={dominant}
           />
-          <Descriptive hours={analysis.hours} grades={analysis.grades} />
+          <Descriptive visible={visible} />
           <Tests
             chi={analysis.chi}
             pairs={analysis.pairs}

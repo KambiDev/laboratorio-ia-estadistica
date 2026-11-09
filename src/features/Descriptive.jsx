@@ -1,26 +1,27 @@
 import React from "react";
-import { Section, Panel, Explain, Table } from "../components/ui.jsx";
+import { Section } from "../components/ui.jsx";
 import StatPanel from "../components/StatPanel.jsx";
+import { QUANTITATIVE_FIELDS } from "../domain/schema.js";
+import { validNumbers } from "../domain/statistics.js";
 
-export default function Descriptive({ hours, grades }) {
+export default function Descriptive({ visible }) {
   return (
     <Section
       id="descriptiva"
       index="04"
       title="Centro y dispersión"
-      subtitle="La varianza y la desviación estándar usan el denominador muestral n − 1."
+      subtitle="Todas las variables cuantitativas. Varianza y desviación con n − 1; CV solo donde la escala tiene cero interpretable."
     >
       <div className="two-col">
-        <StatPanel
-          title="Horas de uso de IA"
-          unit="HORAS / SEMANA"
-          data={hours}
-        />
-        <StatPanel
-          title="Promedio académico"
-          unit="PUNTOS / 100"
-          data={grades}
-        />
+        {QUANTITATIVE_FIELDS.map(({ key, title, unit, coefficient }) => (
+          <StatPanel
+            key={key}
+            title={title}
+            unit={unit}
+            coefficient={coefficient}
+            data={validNumbers(visible, key)}
+          />
+        ))}
       </div>
     </Section>
   );

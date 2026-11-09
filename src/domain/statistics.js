@@ -42,6 +42,10 @@ export function describe(numbers) {
     max: sorted[n - 1],
     variance,
     sd: Math.sqrt(variance),
+    cv:
+      n > 1 && Math.abs(mean) > 1e-12
+        ? (Math.sqrt(variance) / Math.abs(mean)) * 100
+        : NaN,
     q1: quantile(numbers, 0.25),
     q3: quantile(numbers, 0.75),
     p10: quantile(numbers, 0.1),
